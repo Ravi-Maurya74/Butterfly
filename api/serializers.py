@@ -25,6 +25,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
             'user_posts',
             'dob',
             'bookmarked_posts',
+            'liked_posts',
         ]
 
 
