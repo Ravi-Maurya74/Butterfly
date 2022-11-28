@@ -19,5 +19,5 @@ urlpatterns = [
     path('newreply/', views.NewReplyApi.as_view()),
     path('searchuser/', views.search_user),
     path('deletepost/<int:pk>', views.DeletePostApi.as_view()),
-    path('getreplies/', views.getpostreplies),
+    path('getreplies/', views.getPostReplies),
 ]

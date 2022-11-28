@@ -71,10 +71,22 @@ class NewPostSerializer(serializers.ModelSerializer):
         ]
 
 
-class ReplySerializer(serializers.ModelSerializer):
+class NewReplySerializer(serializers.ModelSerializer):
     class Meta:
         model = Reply
         fields = [
             'replied_to',
             'content',
+            'user_id',
+        ]
+
+
+class ReplyInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reply
+        fields = [
+            'replied_to',
+            'content',
+            'user_id',
+            'created',
         ]

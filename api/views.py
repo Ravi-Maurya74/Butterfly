@@ -6,7 +6,7 @@ from rest_framework.response import Response
 import json
 from django.db.models import Q
 from .serializers import IdentifyUserSerializer, UserDetailSerializer, NewUserSerializer, PostInfoSerializer, \
-    PostIdSerializer, NewPostSerializer, ReplySerializer
+    PostIdSerializer, NewPostSerializer, NewReplySerializer, ReplyInfoSerializer
 
 
 # Create your views here.
@@ -134,7 +134,7 @@ def search_user(request):
 
 class NewReplyApi(generics.CreateAPIView):
     queryset = Reply.objects.all()
-    serializer_class = ReplySerializer
+    serializer_class = NewReplySerializer
 
 
 class DeletePostApi(generics.DestroyAPIView):
@@ -143,8 +143,8 @@ class DeletePostApi(generics.DestroyAPIView):
 
 
 @api_view(['POST'])
-def getpostreplies(request):
+def getPostReplies(request):
     received_json_data = json.loads(request.body)
     replies = Reply.objects.filter(replied_to=received_json_data['post_id'])
-    data = ReplySerializer(replies, many=True).data
+    data = ReplyInfoSerializer(replies, many=True).data
     return Response(data)

@@ -33,6 +33,7 @@ class Post(models.Model):
 class Reply(models.Model):
     content = models.CharField(max_length=500)
     replied_to = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='replies')
+    user_id = models.ForeignKey(ApiUser, on_delete=models.CASCADE, related_name='user_replies')
     created = models.DateTimeField(auto_now=True)
 
     def __str__(self):
